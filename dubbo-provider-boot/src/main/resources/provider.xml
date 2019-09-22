@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo
+       http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="dubbo-provider"/>
+
+    <dubbo:registry protocol="zookeeper" address="ahaoserver1:2181,ahaoserver2:2181,ahaoserver3:2181"/>
+
+    <dubbo:protocol name="dubbo" port="3181"/>
+
+    <dubbo:service interface="com.ahao.dubbo.provider.service.IDogService" ref="dogServiceImpl"/>
+
+    <bean id="dogServiceImpl" class="com.ahao.dubbo.provider.service.impl.DogServiceImpl"/>
+</beans>
